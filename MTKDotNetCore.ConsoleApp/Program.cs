@@ -22,4 +22,14 @@ DapperExample dapperExample = new DapperExample();
 
 #endregion
 
+#region EFCoreExample
+
+EFCoreExample efCoreExample = new EFCoreExample();  
+//efCoreExample.Read();
+//efCoreExample.Create();
+//efCoreExample.Edit();
+//efCoreExample.Delete();
+
+#endregion
+
 Console.ReadKey();
