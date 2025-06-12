@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.WebAPI", "MTK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.Shared", "MTKDotNetCore.Shared\MTKDotNetCore.Shared.csproj", "{BA0B12BB-6210-4A83-9940-962E90A2FCB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.BlogMinimalApi", "BlogMinimalApi\MTKDotNetCore.BlogMinimalApi.csproj", "{8ED2F1B3-3E62-4F80-97D6-2296D4766EB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.BirdJsonMinimalApi", "BirdJsonMinimalApi\MTKDotNetCore.BirdJsonMinimalApi.csproj", "{CFE5B41B-22C3-4C7F-82E9-F87EDE4F2138}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{BA0B12BB-6210-4A83-9940-962E90A2FCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA0B12BB-6210-4A83-9940-962E90A2FCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA0B12BB-6210-4A83-9940-962E90A2FCB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED2F1B3-3E62-4F80-97D6-2296D4766EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED2F1B3-3E62-4F80-97D6-2296D4766EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED2F1B3-3E62-4F80-97D6-2296D4766EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED2F1B3-3E62-4F80-97D6-2296D4766EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFE5B41B-22C3-4C7F-82E9-F87EDE4F2138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFE5B41B-22C3-4C7F-82E9-F87EDE4F2138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFE5B41B-22C3-4C7F-82E9-F87EDE4F2138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFE5B41B-22C3-4C7F-82E9-F87EDE4F2138}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

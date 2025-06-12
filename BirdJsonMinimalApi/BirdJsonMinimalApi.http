@@ -1,0 +1,6 @@
+@BirdJsonMinimalApi_HostAddress = http://localhost:5135
+
+GET {{BirdJsonMinimalApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
