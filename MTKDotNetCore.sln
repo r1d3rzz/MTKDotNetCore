@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.ConsoleApp", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.WebAPI", "MTKDotNetCore.WebAPI\MTKDotNetCore.WebAPI.csproj", "{22054F0C-5296-4D93-A1A1-FB14D3036106}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.Shared", "MTKDotNetCore.Shared\MTKDotNetCore.Shared.csproj", "{BA0B12BB-6210-4A83-9940-962E90A2FCB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{22054F0C-5296-4D93-A1A1-FB14D3036106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22054F0C-5296-4D93-A1A1-FB14D3036106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22054F0C-5296-4D93-A1A1-FB14D3036106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA0B12BB-6210-4A83-9940-962E90A2FCB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0B12BB-6210-4A83-9940-962E90A2FCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0B12BB-6210-4A83-9940-962E90A2FCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0B12BB-6210-4A83-9940-962E90A2FCB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
