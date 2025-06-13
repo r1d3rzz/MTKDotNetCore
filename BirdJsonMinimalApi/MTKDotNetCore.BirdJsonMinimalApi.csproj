@@ -13,13 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Data\bird.json">
+    <Content Update="Data\Birds.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

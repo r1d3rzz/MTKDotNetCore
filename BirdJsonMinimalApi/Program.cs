@@ -3,8 +3,6 @@ using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,77 +17,64 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
 app.MapGet("/birds", () =>
 {
-    string filepath = "Data/bird.json";
-    if (!File.Exists(filepath))
-    {
-        return Results.NotFound("Birds data file not found.");
-    }
+    string folderPath = "Data/Birds.json";
+    List<Tbl_Bird> birds = JsonConvert.DeserializeObject<Bird>(File.ReadAllText(folderPath)).Tbl_Bird!.ToList();
 
-    string JsonString = File.ReadAllText(filepath);
-    if (string.IsNullOrEmpty(JsonString))
-    {
-        return Results.NotFound("Birds data is empty.");
-    }   
-
-    var birds = JsonConvert.DeserializeObject<Bird>(JsonString);
-
-    return Results.Ok(birds.Tbl_Bird);
-})
-.WithName("GetBirds")
-.WithOpenApi();
+    return Results.Ok(birds);
+}).WithName("GetBirds").WithOpenApi();
 
 app.MapGet("/birds/{id}", (int id) =>
 {
-    string filepath = "Data/bird.json";
-    if (!File.Exists(filepath))
+    string folderPath = "Data/Birds.json";
+    List<Tbl_Bird> birds = JsonConvert.DeserializeObject<Bird>(File.ReadAllText(folderPath)).Tbl_Bird!.ToList();
+
+    if (birds != null)
     {
-        return Results.NotFound("Birds data file not found.");
+        return Results.Ok(birds.FirstOrDefault(b => b.Id == id));
     }
 
-    string JsonString = File.ReadAllText(filepath);
-    if (string.IsNullOrEmpty(JsonString))
+    return Results.NotFound();
+}).WithName("GetBird").WithOpenApi();
+
+
+app.MapPost("/birds", (Tbl_Bird tbl_Bird) =>
+{
+    string folderPath = "Data/Birds.json";
+    List<Tbl_Bird> birds = JsonConvert.DeserializeObject<Bird>(File.ReadAllText(folderPath)).Tbl_Bird!.ToList();
+
+    Tbl_Bird newBird = new Tbl_Bird();
+    newBird.Id = birds.Count < 0 ? 1 : birds.Max(b => b.Id) + 1;
+    newBird.BirdMyanmarName = tbl_Bird.BirdMyanmarName;
+    newBird.BirdEnglishName = tbl_Bird.BirdEnglishName;
+    newBird.Description = tbl_Bird.Description;
+    newBird.ImagePath = tbl_Bird.ImagePath;
+    birds.Add(newBird);
+    var data = new
     {
-        return Results.NotFound("Birds data is empty.");
-    }
+        Tbl_Bird = birds
+    };
 
-    var birds = JsonConvert.DeserializeObject<Bird>(JsonString);
-    var bird = birds.Tbl_Bird.Where(x => x.Id == id).FirstOrDefault();
+    File.WriteAllText(folderPath, JsonConvert.SerializeObject(data, Formatting.Indented));
+    return Results.Ok(newBird);
 
-    if (bird is null)
-    {
-        return Results.NotFound();
-    }
+});
 
-    return Results.Ok(bird);
-})
-.WithName("GetBird")
-.WithOpenApi();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
 
 
 public class Bird
 {
-    public BirdResponse[] Tbl_Bird { get; set; }
+    public List<Tbl_Bird>? Tbl_Bird { get; set; }
 }
 
-public class BirdResponse
+public class Tbl_Bird
 {
     public int Id { get; set; }
-    public string BirdMyanmarName { get; set; }
-    public string BirdEnglishName { get; set; }
-    public string Description { get; set; }
-    public string ImagePath { get; set; }
+    public string? BirdMyanmarName { get; set; }
+    public string? BirdEnglishName { get; set; }
+    public string? Description { get; set; }
+    public string? ImagePath { get; set; }
 }
