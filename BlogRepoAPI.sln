@@ -5,6 +5,10 @@ VisualStudioVersion = 17.14.36202.13 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogRepoAPI", "BlogRepoAPI\BlogRepoAPI.csproj", "{1EFD3000-3A9D-48DF-894D-BAFAD38A7133}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogRepoAPI.Domain", "BlogRepoAPI.Domain\BlogRepoAPI.Domain.csproj", "{43CA351D-CB0A-402E-8163-7E65D064FDA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogRepoAPI.Database", "BlogRepoAPI.Database\BlogRepoAPI.Database.csproj", "{CB26CE6C-6C9F-4DDB-B53D-BA37754FAAD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1EFD3000-3A9D-48DF-894D-BAFAD38A7133}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EFD3000-3A9D-48DF-894D-BAFAD38A7133}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EFD3000-3A9D-48DF-894D-BAFAD38A7133}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43CA351D-CB0A-402E-8163-7E65D064FDA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CA351D-CB0A-402E-8163-7E65D064FDA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CA351D-CB0A-402E-8163-7E65D064FDA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CA351D-CB0A-402E-8163-7E65D064FDA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB26CE6C-6C9F-4DDB-B53D-BA37754FAAD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB26CE6C-6C9F-4DDB-B53D-BA37754FAAD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB26CE6C-6C9F-4DDB-B53D-BA37754FAAD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB26CE6C-6C9F-4DDB-B53D-BA37754FAAD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
