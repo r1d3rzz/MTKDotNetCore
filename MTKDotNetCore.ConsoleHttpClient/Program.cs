@@ -1,4 +1,5 @@
 ﻿using MTKDotNetCore.ConsoleHttpClient;
+using Refit;
 
 Console.WriteLine("App is Start");
 
@@ -19,4 +20,12 @@ Console.WriteLine("App is Start");
 //await httpRestClientExample.DeleteAsync(2);
 #endregion
 
+#region Refit
+RefitExample refitExample = new RefitExample();
+//await refitExample.Todos("10");
+//await refitExample.Todos("11");
+//await refitExample.CreateTodo("12", "Test Test", false, 562);
+//await refitExample.UpdateTodo("12" ,"Test Update", true, 562);
+//await refitExample.DeleteTodo("12");
+#endregion
 Console.ReadKey();
