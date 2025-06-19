@@ -5,9 +5,14 @@ using BlogModel = MTKDotNetCore.ConsoleApp.Model.Blog;
 
 namespace MTKDotNetCore.Domain.Features.Blog
 {
-    public class BlogService
+    public class BlogService : IBlogService
     {
-        private readonly DotNetTrainingBatch5Context _db = new DotNetTrainingBatch5Context();
+        private readonly DotNetTrainingBatch5Context _db;
+
+        public BlogService(DotNetTrainingBatch5Context db)
+        {
+            _db = db;
+        }
 
         public List<BlogModel> GetBlogs()
         {

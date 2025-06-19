@@ -7,16 +7,14 @@ namespace BlogMinimalApi.EndPoints.Blog
     {
         public static void UseBlogEndPoint(this IEndpointRouteBuilder app)
         {
-            app.MapGet("/blogs", () =>
+            app.MapGet("/blogs", (DotNetTrainingBatch5Context context) =>
             {
-                DotNetTrainingBatch5Context context = new DotNetTrainingBatch5Context();
                 var blogs = context.Blogs.Where(x => x.DeleteFlag != true).ToList();
                 return Results.Ok(blogs);
             }).WithName("GetBlogs").WithOpenApi();
 
-            app.MapGet("/blogs/{id}", (int id) =>
+            app.MapGet("/blogs/{id}", (DotNetTrainingBatch5Context context, int id) =>
             {
-                DotNetTrainingBatch5Context context = new DotNetTrainingBatch5Context();
                 var blog = context.Blogs.Where(x => x.BlogId == id).FirstOrDefault();
                 if (blog != null)
                 {
@@ -26,9 +24,8 @@ namespace BlogMinimalApi.EndPoints.Blog
                 return Results.NotFound();
             }).WithName("ShowBlog").WithOpenApi();
 
-            app.MapPost("/blogs/create", (MTKDotNetCore.ConsoleApp.Model.Blog blog) =>
+            app.MapPost("/blogs/create", (DotNetTrainingBatch5Context context, MTKDotNetCore.ConsoleApp.Model.Blog blog) =>
             {
-                DotNetTrainingBatch5Context context = new DotNetTrainingBatch5Context();
                 var newBlog = new MTKDotNetCore.ConsoleApp.Model.Blog();
                 newBlog.BlogTitle = blog.BlogTitle;
                 newBlog.BlogAuthor = blog.BlogAuthor;
@@ -40,9 +37,8 @@ namespace BlogMinimalApi.EndPoints.Blog
                 return Results.Ok(newBlog);
             }).WithName("CreateBlog").WithOpenApi();
 
-            app.MapPut("/blogs/edit/{id}", (int id ,MTKDotNetCore.ConsoleApp.Model.Blog blog) =>
+            app.MapPut("/blogs/edit/{id}", (DotNetTrainingBatch5Context context, int id ,MTKDotNetCore.ConsoleApp.Model.Blog blog) =>
             {
-                DotNetTrainingBatch5Context context = new DotNetTrainingBatch5Context();
                 var editBlog = context.Blogs.AsNoTracking().Where(x => x.BlogId == id).FirstOrDefault();
 
                 if (editBlog is null)

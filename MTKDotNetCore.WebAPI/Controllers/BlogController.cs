@@ -11,7 +11,12 @@ namespace MTKDotNetCore.WebAPI.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
-        private readonly DotNetTrainingBatch5Context context = new DotNetTrainingBatch5Context();
+        private readonly DotNetTrainingBatch5Context context;
+
+        public BlogController(DotNetTrainingBatch5Context context)
+        {
+            this.context = context;
+        }
 
         [HttpGet]
         public IActionResult Index()

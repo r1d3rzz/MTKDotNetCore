@@ -11,13 +11,15 @@ namespace MTKDotNetCore.WebAPI.Controllers
     [ApiController]
     public class BlogServiceController : ControllerBase
     {
-        protected BlogService _blogService;
+        protected IBlogService _blogService;
 
-        public BlogServiceController()
+        public BlogServiceController(DotNetTrainingBatch5Context context)
         {
-            _blogService = new BlogService();
+            this.context = context;
+            _blogService = new BlogService(context);
         }
-        private readonly DotNetTrainingBatch5Context context = new DotNetTrainingBatch5Context();
+
+        private readonly DotNetTrainingBatch5Context context;
 
         [HttpGet]
         public IActionResult Index()
