@@ -1,0 +1,6 @@
+@MTKDotNetCore.MinimalApi.DI_HostAddress = http://localhost:5183
+
+GET {{MTKDotNetCore.MinimalApi.DI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
