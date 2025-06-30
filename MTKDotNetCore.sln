@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.ConsoleApp.DI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.MinimalApi.DI", "MTKDotNetCore.MinimalApi.DI\MTKDotNetCore.MinimalApi.DI.csproj", "{D591C14A-96E0-4DC8-B6BD-AD63E4AAD32E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.AuthAPI", "MTKDotNetCore.AuthAPI\MTKDotNetCore.AuthAPI.csproj", "{30A4A969-40FF-486B-B956-3C29BD76ECCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{D591C14A-96E0-4DC8-B6BD-AD63E4AAD32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D591C14A-96E0-4DC8-B6BD-AD63E4AAD32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D591C14A-96E0-4DC8-B6BD-AD63E4AAD32E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A4A969-40FF-486B-B956-3C29BD76ECCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A4A969-40FF-486B-B956-3C29BD76ECCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A4A969-40FF-486B-B956-3C29BD76ECCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A4A969-40FF-486B-B956-3C29BD76ECCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
