@@ -1,7 +1,22 @@
+using Blog.Database.Models;
+using Blog.Domain.Repositories.BlogRepo;
+using Blog.Domain.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddDbContext<BlogContext>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
+});
+
+builder.Services.AddScoped<IBlogRepository, BlogRepository>();
+builder.Services.AddScoped<BlogService>();
 
 var app = builder.Build();
 

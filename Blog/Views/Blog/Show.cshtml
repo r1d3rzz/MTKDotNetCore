@@ -1,0 +1,69 @@
+﻿@model Blog.Database.Models.TblBlog
+
+@{
+    ViewBag.Title = "Blogs | Detail";
+    var RandomBlogs = ViewBag.RandomBlogs;
+}
+
+<div class="row justify-content-center">
+    @if (Model != null)
+    {
+        <div class="col-lg-8 mb-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-end">
+                    <button class="btn btn-sm btn-primary px-3" onclick="window.history.back()">Back</button>
+                </div>
+
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="fs-4 fw-normal">@Model.Title</div>
+                        <div>@(Model.TblUser == null ? "-" : Model.TblUser?.Username)</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="badge bg-primary">@Model.TblCategory?.Name</div>
+                    </div>
+                    <p>@Model.Detail</p>
+                </div>
+
+                <div class="card-footer">
+                    <div class="small text-muted">@Model.UpdatedAt</div>
+                </div>
+            </div>
+        </div>
+
+        @if (RandomBlogs != null)
+        {
+            <div class="row">
+                <div class="fs-4 fw-normal my-3 text-center">Blogs you may also like</div>
+
+                @foreach (Blog.Database.Models.TblBlog blog in RandomBlogs)
+                {
+                    <div class="col-lg-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="fs-4 fw-normal">@blog.Title</div>
+                                    <div>@(blog.TblUser == null ? "-" : blog.TblUser?.Username)</div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="badge bg-primary">@blog.TblCategory?.Name</div>
+                                </div>
+                                <p>@blog.Detail <a class="text-decoration-none" asp-action="Show" asp-route-BlogId="@blog.TblBlogId">Read More...</a></p>
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="small text-muted">@blog.UpdatedAt</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-lg-4 mb-3">
+            <div>Blog Not Found!</div>
+        </div>
+    }
+</div>

@@ -1,0 +1,98 @@
+﻿@model List<Blog.Database.Models.TblBlog>
+@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    string currentBlogCategory = string.Empty;
+    string SearchValue = string.Empty;
+    string pageNumber = string.Empty;
+    if (HttpContextAccessor.HttpContext != null)
+    {
+        currentBlogCategory = HttpContextAccessor.HttpContext.Request.Query["CategoryId"].ToString();
+        SearchValue = HttpContextAccessor.HttpContext.Request.Query["Search"].ToString();
+        pageNumber = HttpContextAccessor.HttpContext.Request.Query["pageNumber"].ToString();
+        currentBlogCategory = currentBlogCategory switch
+        {
+            "1" => "Frontend Blogs",
+            "2" => "Backend Blogs",
+            _ => "All Blogs"
+        };
+    }
+    int TotalBlogsCount = Convert.ToInt32(ViewBag.TotalBlogsCount);
+    ViewBag.Title = "Blogs";
+}
+
+<div class="mb-3 fs-4 fw-normal">Blogs</div>
+
+<div class="row justify-content-center my-3">
+    <div class="col-lg-4">
+        <div class="d-flex justify-content-center">
+            <div class="input-group">
+                <span class="input-group-text">Filter</span>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @currentBlogCategory
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-action="Index">All</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-CategoryId="1">Frontend</a></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-route-CategoryId="2">Backend</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+            <input type="text" id="search" value="@SearchValue" class="form-control" />
+            <button class="btn btn-primary" id="blogSearchBtn">Search</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (Blog.Database.Models.TblBlog blog in Model)
+    {
+        <div class="col-lg-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="fs-4 fw-normal">@blog.Title</div>
+                        <div>@(blog.TblUser == null ? "-" : blog.TblUser?.Username)</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="badge bg-primary">@blog.TblCategory?.Name</div>
+                    </div>
+                    <p>@blog.Detail <a class="text-decoration-none" asp-action="Show" asp-route-BlogId="@blog.TblBlogId">Read More...</a></p>
+                </div>
+
+                <div class="card-footer">
+                    <div class="small text-muted">@blog.UpdatedAt</div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (TotalBlogsCount > 0)
+                {
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    int totalBtns = (int)Math.Ceiling((double)TotalBlogsCount / 6);
+                    for (int i = 1; i <= totalBtns; i++)
+                    {
+                        <li class="page-item @(pageNumber == i.ToString() ? "active" : null)"><a class="page-link" asp-action="GetBlogsByPagination" asp-route-pageNumber="@i" asp-route-pageSize="6">@i</a></li>
+                    }
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/blogsearch.js"></script>
+}
