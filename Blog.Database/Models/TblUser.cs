@@ -17,9 +17,9 @@ public partial class TblUser
 
     public bool DeleteFlag { get; set; }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-    public DateTime UpdatedAt { get; set; }
-    
+    public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
     public ICollection<TblBlog>? TblBlogs { get; set; }
 }

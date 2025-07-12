@@ -19,6 +19,8 @@ public partial class BlogContext : DbContext
 
     public virtual DbSet<TblUser> TblUsers { get; set; }
 
+    public virtual DbSet<TblLogin> TblLogins { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblBlog>(entity =>
@@ -56,6 +58,16 @@ public partial class BlogContext : DbContext
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<TblLogin>(entity =>
+        {
+            entity.ToTable("Tbl_Login");
+
+            entity.Property(e => e.TblLoginId).HasColumnName("Tbl_LoginId");
+            entity.Property(e => e.SessionExpired).HasColumnType("datetime");
+            entity.Property(e => e.SessionId).HasMaxLength(50);
+            entity.Property(e => e.TblUserId).HasColumnName("Tbl_UserId");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor IHttpContextAccessor
+
+@{
+    var isAuthUser = string.Empty;
+    var AuthUserName = string.Empty;
+
+    if (IHttpContextAccessor?.HttpContext?.Request?.Cookies != null &&
+        IHttpContextAccessor.HttpContext.Request.Cookies.ContainsKey("Authorization"))
+    {
+        isAuthUser = IHttpContextAccessor.HttpContext.Request.Cookies["Authorization"];
+    }
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,10 +39,30 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="Index">Blogs</a>
-                        </li>
+                        @if (isAuthUser != string.Empty)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="Index">Blogs</a>
+                            </li>
+                        }
                     </ul>
+                    <div>
+                        <ul class="navbar-nav flex-grow-1">
+                            @if (isAuthUser == string.Empty)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">@await Component.InvokeAsync("UserInfo", new { isAuthUser = isAuthUser })</li>
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

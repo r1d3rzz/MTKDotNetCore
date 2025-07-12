@@ -1,6 +1,9 @@
 using Blog.Database.Models;
 using Blog.Domain.Repositories.BlogRepo;
+using Blog.Domain.Repositories.LoginRepo;
+using Blog.Domain.Repositories.RegisterRepo;
 using Blog.Domain.Services;
+using Blog.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +19,11 @@ builder.Services.AddDbContext<BlogContext>(opt =>
 });
 
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
+builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+builder.Services.AddScoped<IRegisterRepository, RegisterRepository>();
 builder.Services.AddScoped<BlogService>();
+builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<RegisterService>();
 
 var app = builder.Build();
 
@@ -32,6 +39,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseMiddleware<AuthMiddleware>();
 
 app.UseAuthorization();
 

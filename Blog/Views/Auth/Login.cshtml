@@ -1,0 +1,33 @@
+﻿@model Blog.Domain.RequestModels.LoginRequest
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="row d-flex flex-column align-items-center justify-content-center" style="height: 70vh;">
+    <div class="col-lg-5">
+        <div class="card card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" asp-for="Email" aria-describedby="emailHelp">
+                    <span asp-validation-for="Email" class="text-danger form-text"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger form-text"></span>
+                </div>
+              
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
