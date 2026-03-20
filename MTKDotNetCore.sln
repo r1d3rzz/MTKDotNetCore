@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11612.150 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.ConsoleApp", "MTKDotNetCore.ConsoleApp\MTKDotNetCore.ConsoleApp.csproj", "{CFDEE7D1-5AA5-4901-9670-D75A3CCE74AD}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.MinimalApi.DI", "MTKDotNetCore.MinimalApi.DI\MTKDotNetCore.MinimalApi.DI.csproj", "{D591C14A-96E0-4DC8-B6BD-AD63E4AAD32E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.AuthAPI", "MTKDotNetCore.AuthAPI\MTKDotNetCore.AuthAPI.csproj", "{30A4A969-40FF-486B-B956-3C29BD76ECCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTKDotNetCore.RateLimiting", "MTKDotNetCore.RateLimiting\MTKDotNetCore.RateLimiting.csproj", "{73BDC24D-A9D3-47C1-9730-ADAEFC4EF8E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{30A4A969-40FF-486B-B956-3C29BD76ECCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30A4A969-40FF-486B-B956-3C29BD76ECCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A4A969-40FF-486B-B956-3C29BD76ECCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73BDC24D-A9D3-47C1-9730-ADAEFC4EF8E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73BDC24D-A9D3-47C1-9730-ADAEFC4EF8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73BDC24D-A9D3-47C1-9730-ADAEFC4EF8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73BDC24D-A9D3-47C1-9730-ADAEFC4EF8E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
