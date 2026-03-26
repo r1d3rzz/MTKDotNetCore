@@ -1,0 +1,6 @@
+@MTKDotNetCore.JwtTokenWithWebAPI_HostAddress = http://localhost:5236
+
+GET {{MTKDotNetCore.JwtTokenWithWebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
